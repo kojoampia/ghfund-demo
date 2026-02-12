@@ -1,0 +1,37 @@
+
+    <div class="h-screen flex flex-col bg-[#02120a] text-gray-100 font-sans selection:bg-yellow-500/30 overflow-hidden">
+      
+      <jhi-dashboard-header 
+        [role]="role()" 
+        [userName]="userName()"
+        (changeRole)="setRole($event)"
+        (toggleNav)="toggleNav()">
+      </jhi-dashboard-header>
+
+      <div class="flex-1 flex overflow-hidden">
+        
+        <jhi-dashboard-sidenav 
+          [isVisible]="isNavOpen()"
+          [role]="role()" 
+          [currentView]="currentView()"
+          (changeView)="setView($event)">
+        </jhi-dashboard-sidenav>
+
+        <main class="flex-1 overflow-y-auto p-8 relative bg-[#02120a] custom-scrollbar transition-all duration-300">
+          
+          <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-green-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+          <div class="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-yellow-900/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+          <div class="max-w-6xl mx-auto relative z-10">
+            <ng-container [ngSwitch]="role()">
+              <jhi-public-dashboard *ngSwitchCase="'PUBLIC'" />
+              <jhi-investor-dashboard *ngSwitchCase="'INVESTOR'" [currentView]="currentView()" />
+              <jhi-admin-dashboard *ngSwitchCase="'ADMIN'" />
+              <jhi-regulator-dashboard *ngSwitchCase="'REGULATOR'" />
+            </ng-container>
+          </div>
+        </main>
+      </div>
+
+      <jhi-dashboard-footer />
+    </div>

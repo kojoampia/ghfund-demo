@@ -1,0 +1,27 @@
+{
+  "appDemoApp": {
+    "circle": {
+      "home": {
+        "title": "Circles",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Circle",
+        "createOrEditLabel": "Créer ou éditer un Circle",
+        "notFound": "Aucun Circle trouvé"
+      },
+      "created": "Un nouveau Circle a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Circle avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Circle avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Circle {{ id }} ?"
+      },
+      "detail": {
+        "title": "Circle"
+      },
+      "id": "ID",
+      "name": "Name",
+      "members": "Members",
+      "impact": "Impact",
+      "focus": "Focus"
+    }
+  }
+}

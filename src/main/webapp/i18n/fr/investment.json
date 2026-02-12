@@ -1,0 +1,29 @@
+{
+  "appDemoApp": {
+    "investment": {
+      "home": {
+        "title": "Investments",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Investment",
+        "createOrEditLabel": "Créer ou éditer un Investment",
+        "notFound": "Aucun Investment trouvé"
+      },
+      "created": "Un nouveau Investment a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Investment avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Investment avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Investment {{ id }} ?"
+      },
+      "detail": {
+        "title": "Investment"
+      },
+      "id": "ID",
+      "project": "Project",
+      "amount": "Amount",
+      "date": "Date",
+      "roi": "Roi",
+      "status": "Status",
+      "hash": "Hash"
+    }
+  }
+}

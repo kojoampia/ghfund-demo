@@ -1,0 +1,42 @@
+
+    <header class="bg-[#010a05] border-b border-white/10 h-16 px-6 flex items-center justify-between shadow-2xl z-50">
+      <div class="flex items-center gap-4">
+        <button (click)="onToggle()" class="text-gray-400 hover:text-yellow-500 transition-colors">
+          <span class="material-icons">menu</span>
+        </button>
+
+        <div class="w-10 h-10 rounded bg-gradient-to-br from-[#D97706] to-[#92400e] flex items-center justify-center text-black font-black text-xl shadow-lg">GH</div>
+        
+        <div class="flex flex-col">
+          <span class="font-bold tracking-tight text-lg leading-none">GH Fund <span class="text-[#D97706]">App</span></span>
+          <span class="text-[9px] uppercase font-bold text-gray-500 tracking-[0.2em] mt-1">{{ role() }} ENVIRONMENT</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <div class="hidden md:flex bg-white/5 p-1 rounded-lg border border-white/10">
+          <button *ngFor="let r of roles" 
+                  (click)="changeRole.emit(r)"
+                  [class.bg-yellow-500]="role() === r"
+                  [class.text-black]="role() === r"
+                  class="px-3 py-1 rounded text-[10px] font-bold uppercase transition-all hover:bg-white/10">
+            {{ r }}
+          </button>
+        </div>
+
+        <div class="h-6 w-px bg-white/10"></div>
+        
+        <div [class.hidden]="role() === 'PUBLIC'" class="flex items-center gap-3">
+          <div class="text-right hidden sm:block">
+            <div class="text-xs font-bold leading-none text-white">{{ userName() }}</div>
+            <div class="text-[9px] uppercase tracking-widest text-[#D97706] mt-1 font-bold">Verified Identity</div>
+          </div>
+          <div class="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-gray-400 shadow-inner">
+             <span class="material-icons text-xl">account_circle</span>
+          </div>
+        </div>
+        
+        <button *ngIf="role() === 'PUBLIC'" class="bg-[#D97706] text-black font-bold text-[10px] tracking-widest uppercase px-6 py-2 rounded shadow-lg hover:bg-yellow-500 transition-colors">Connect</button>
+      </div>
+    </header>
+    

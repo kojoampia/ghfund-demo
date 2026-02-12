@@ -1,0 +1,34 @@
+enum ProjectStatus {
+  ACTIVE, VETTING, CLOSED
+}
+
+entity Project {
+  name String required,
+  sector String,
+  status ProjectStatus,
+  targetAmount Long,
+  currentRaised Long,
+  impactScore Integer
+}
+
+entity Circle {
+  name String required,
+  members Integer,
+  impact Integer,
+  focus String
+}
+
+entity Investment {
+  amount Long,
+  date LocalDate,
+  roi Double,
+  status String,
+  hash String
+}
+
+relationship ManyToOne {
+  Investment{project(name)} to Project
+}
+
+paginate Project, Circle, Investment with pagination
+service all with serviceClass

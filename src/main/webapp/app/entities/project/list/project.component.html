@@ -1,0 +1,126 @@
+<div>
+  <h2 id="page-heading" data-cy="ProjectHeading">
+    <span jhiTranslate="appDemoApp.project.home.title">Projects</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="appDemoApp.project.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-project"
+        [routerLink]="['/project/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="appDemoApp.project.home.createLabel">Create a new Project</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (projects().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="appDemoApp.project.home.notFound">No Projects found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="name">
+              <div class="d-flex">
+                <span jhiTranslate="appDemoApp.project.name">Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="sector">
+              <div class="d-flex">
+                <span jhiTranslate="appDemoApp.project.sector">Sector</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status">
+              <div class="d-flex">
+                <span jhiTranslate="appDemoApp.project.status">Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="targetAmount">
+              <div class="d-flex">
+                <span jhiTranslate="appDemoApp.project.targetAmount">Target Amount</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="currentRaised">
+              <div class="d-flex">
+                <span jhiTranslate="appDemoApp.project.currentRaised">Current Raised</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="impactScore">
+              <div class="d-flex">
+                <span jhiTranslate="appDemoApp.project.impactScore">Impact Score</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (project of projects(); track trackId(project)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/project', project.id, 'view']">{{ project.id }}</a>
+              </td>
+              <td>{{ project.name }}</td>
+              <td>{{ project.sector }}</td>
+              <td [jhiTranslate]="'appDemoApp.ProjectStatus.' + (project.status ?? 'null')">
+                {{ { null: '', ACTIVE: 'ACTIVE', VETTING: 'VETTING', CLOSED: 'CLOSED' }[project.status ?? 'null'] }}
+              </td>
+              <td>{{ project.targetAmount }}</td>
+              <td>{{ project.currentRaised }}</td>
+              <td>{{ project.impactScore }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/project', project.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/project', project.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(project)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

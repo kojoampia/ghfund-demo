@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "appDemo",
+    "buildTool": "maven",
+    "cacheProvider": "ehcache",
+    "clientFramework": "angular",
+    "clientPackageManager": "npm",
+    "creationTimestamp": 1769129550014,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "entities": ["Project", "Circle", "Investment"],
+    "jhipsterVersion": "8.11.0",
+    "jwtSecretKey": "YWI4OWI5N2UwYTgzYjZkN2Y3YTExMzc3ZDNjODQxYmQzM2JjZWJlOWEwOTQ5YzYxN2I5MDMyZGQ4YWNhZmU2Yjc2MTJhNzc0YjQ1NjI1YTc3NDI4MmRkYTU5YzcyZDI4ZjliNDI1NmEwODdmMTY0NWRjNzhjZTMwZTkwZjMxMjE=",
+    "languages": ["en", "fr"],
+    "lastLiquibaseTimestamp": 1769129925000,
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "packageName": "com.ghfund.appdemo",
+    "prodDatabaseType": "postgresql",
+    "skipCommitHook": true
+  }
+}

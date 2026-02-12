@@ -1,0 +1,124 @@
+<div>
+  <h2 id="page-heading" data-cy="InvestmentHeading">
+    <span jhiTranslate="appDemoApp.investment.home.title">Investments</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="appDemoApp.investment.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-investment"
+        [routerLink]="['/investment/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="appDemoApp.investment.home.createLabel">Create a new Investment</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (investments().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="appDemoApp.investment.home.notFound">No Investments found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="project">
+              <div class="d-flex">
+                <span jhiTranslate="appDemoApp.investment.project">Project</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="amount">
+              <div class="d-flex">
+                <span jhiTranslate="appDemoApp.investment.amount">Amount</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="date">
+              <div class="d-flex">
+                <span jhiTranslate="appDemoApp.investment.date">Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="roi">
+              <div class="d-flex">
+                <span jhiTranslate="appDemoApp.investment.roi">Roi</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status">
+              <div class="d-flex">
+                <span jhiTranslate="appDemoApp.investment.status">Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="hash">
+              <div class="d-flex">
+                <span jhiTranslate="appDemoApp.investment.hash">Hash</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (investment of investments(); track trackId(investment)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/investment', investment.id, 'view']">{{ investment.id }}</a>
+              </td>
+              <td>{{ investment.project }}</td>
+              <td>{{ investment.amount }}</td>
+              <td>{{ investment.date | formatMediumDatetime }}</td>
+              <td>{{ investment.roi }}</td>
+              <td>{{ investment.status }}</td>
+              <td>{{ investment.hash }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/investment', investment.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/investment', investment.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(investment)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

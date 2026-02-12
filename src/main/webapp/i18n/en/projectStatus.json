@@ -1,0 +1,10 @@
+{
+  "appDemoApp": {
+    "ProjectStatus": {
+      "null": "",
+      "ACTIVE": "ACTIVE",
+      "VETTING": "VETTING",
+      "CLOSED": "CLOSED"
+    }
+  }
+}

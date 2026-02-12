@@ -1,0 +1,59 @@
+
+    <ng-container *ngIf="currentView() === 'OVERVIEW'">
+      <div class="flex justify-between items-end animate-fade-in mb-10">
+        <div>
+          <h1 class="text-4xl font-light text-white tracking-tight">Akwaaba, <span class="font-bold text-yellow-400">Kwame Mensah</span></h1>
+          <p class="text-gray-400 mt-2 text-sm">Institutional diaspora capital engine.</p>
+        </div>
+        <button class="bg-yellow-500 text-black font-bold px-6 py-3 rounded-xl uppercase text-xs tracking-widest shadow-xl hover:shadow-yellow-500/20 active:scale-95">
+           Commit Capital
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="bg-white/5 border border-white/10 border-t-4 border-green-500 p-6 rounded-2xl relative overflow-hidden shadow-xl">
+            <p class="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-2">My Holdings</p>
+            <h2 class="text-3xl font-bold text-white leading-none">{{ service.userPortfolio() | currency:'USD':'symbol':'1.0-0' }}</h2>
+            <p class="text-[10px] font-bold text-green-400 mt-4">▲ 5.2% Yield</p>
+        </div>
+        </div>
+      
+      </ng-container>
+
+    <ng-container *ngIf="currentView() === 'LEDGER'">
+      <div class="space-y-8 animate-fade-in pb-12">
+        <div class="bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden backdrop-blur-md shadow-2xl">
+          <div class="p-8 border-b border-white/10 bg-white/[0.02] grid grid-cols-1 md:grid-cols-3 gap-8">
+             <div>
+               <p class="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-1">Identity UID</p>
+               <p class="font-mono text-sm text-yellow-500">sub_0x7f8e3a2db3a2</p>
+             </div>
+             <div>
+               <p class="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-1">Portfolio Value</p>
+               <p class="font-bold text-xl text-white">{{ service.userPortfolio() | currency }}</p>
+             </div>
+          </div>
+
+          <table class="w-full text-left">
+            <thead>
+              <tr class="text-[10px] font-black text-gray-500 uppercase tracking-widest border-b border-white/5">
+                <th class="p-8">Transaction Date</th>
+                <th class="p-8">Initiative</th>
+                <th class="p-8 text-right">Commitment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let inv of service.investments()" class="hover:bg-white/[0.03] transition-colors border-b border-white/5">
+                <td class="p-8">
+                  <div class="text-sm font-bold text-gray-100">{{ inv.date | date:'MMM dd, yyyy' }}</div>
+                  <div class="text-[9px] text-gray-500 font-mono mt-1">{{ inv.hash }}</div>
+                </td>
+                <td class="p-8 text-white">{{ inv.project }}</td>
+                <td class="p-8 text-right text-yellow-500 font-bold">{{ inv.amount | currency }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ng-container>
+    

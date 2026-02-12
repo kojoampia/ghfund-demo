@@ -1,0 +1,104 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>GH Fund Pro | Sovereign Diaspora Ledger</title>
+    <meta name="description" content="Ghana Home Land Fund Pro - The official sovereign capital engine for the global diaspora." />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+    <base href="/" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="manifest" href="manifest.webapp" />
+    <link rel="stylesheet" href="content/css/loading.css" />
+    
+    <!-- Core Professional Fonts (As specified in Design Specs) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    
+    <style>
+      /* Baseline Global Styles to prevent FOUC (Flash of Unstyled Content) */
+      :root {
+        --heritage-green: #02120a;
+        --sovereign-gold: #D97706;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--heritage-green);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        overflow: hidden; /* Scrollbars handled by the Angular Dashboard components */
+      }
+
+      /* Sovereign Loading State */
+      #gh-fund-loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        background: radial-gradient(circle at 50% -20%, #052616, #02120a);
+      }
+
+      .loader-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #D97706 0%, #92400e 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: black;
+        font-weight: 900;
+        font-size: 2rem;
+        box-shadow: 0 0 30px rgba(217, 119, 6, 0.2);
+        margin-bottom: 24px;
+        animation: pulse 2s infinite ease-in-out;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.05); opacity: 0.8; }
+      }
+
+      .loader-text {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        font-weight: 700;
+      }
+    </style>
+    <!-- jhipster-needle-add-resources-to-root - JHipster will add new resources here -->
+  </head>
+  <body class="mat-typography">
+    <!--[if lt IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve
+        your experience.
+      </p>
+    <![endif]-->
+    <jhi-app>
+      <!-- Placeholder displayed while Angular/Zone.js initializes -->
+      <div id="gh-fund-loader">
+        <div class="loader-icon">GH</div>
+        <div class="loader-text">Engaging Sovereign Shield...</div>
+      </div>
+    </jhi-app>
+    <noscript>
+      <div style="padding: 2rem; text-align: center; color: white;">
+        <h1>Access Denied</h1>
+        <p>The GH Fund Pro platform requires JavaScript to enforce secure identity verification and Row-Level Security isolation.</p>
+      </div>
+    </noscript>
+  </body>
+</html>

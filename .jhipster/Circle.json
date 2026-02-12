@@ -1,0 +1,30 @@
+{
+  "annotations": {
+    "changelogDate": "20260123005844"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "members",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "impact",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "focus",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Circle",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

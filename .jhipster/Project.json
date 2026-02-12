@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20260123005843"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sector",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ProjectStatus",
+      "fieldValues": "ACTIVE,VETTING,CLOSED"
+    },
+    {
+      "fieldName": "targetAmount",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "currentRaised",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "impactScore",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Project",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

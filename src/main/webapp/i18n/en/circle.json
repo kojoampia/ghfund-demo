@@ -1,0 +1,27 @@
+{
+  "appDemoApp": {
+    "circle": {
+      "home": {
+        "title": "Circles",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Circle",
+        "createOrEditLabel": "Create or edit a Circle",
+        "notFound": "No Circles found"
+      },
+      "created": "A new Circle is created with identifier {{ param }}",
+      "updated": "A Circle is updated with identifier {{ param }}",
+      "deleted": "A Circle is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Circle {{ id }}?"
+      },
+      "detail": {
+        "title": "Circle"
+      },
+      "id": "ID",
+      "name": "Name",
+      "members": "Members",
+      "impact": "Impact",
+      "focus": "Focus"
+    }
+  }
+}
